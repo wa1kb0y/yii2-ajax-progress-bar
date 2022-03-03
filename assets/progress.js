@@ -13,11 +13,11 @@ items.each(function (index, el) {
                     clearInterval(periodic);
                     bar.removeClass('progress-bar-animated progress-bar-striped');
                     if (typeof window[id + '_onDoneEvent'] !== "undefined") {
-                        window[id + '_onDoneEvent']();
+                        window[id + '_onDoneEvent'](data);
                     }
                 }
                 if (typeof window[id + '_onPeriodEvent'] !== "undefined") {
-                    window[id + '_onPeriodEvent']();
+                    window[id + '_onPeriodEvent'](data);
                 }
             });
         }, period);
