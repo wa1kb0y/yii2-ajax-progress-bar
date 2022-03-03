@@ -16,6 +16,9 @@ items.each(function (index, el) {
                         window[id + '_onDoneEvent']();
                     }
                 }
+                if (typeof window[id + '_onPeriodEvent'] !== "undefined") {
+                    window[id + '_onPeriodEvent']();
+                }
             });
         }, period);
     }

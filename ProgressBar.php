@@ -7,10 +7,17 @@ use \yii\helpers\Url;
 
 class ProgressBar extends Progress
 {
+    /** @var string url for ajax request should return current progress data */
     public $url = '';
+
+    /** @var int period in seconds */
     public $period = 5;
 
+    /** @var string js code will be executed when `data.percent` == 100 value received */
     public $onDone = '';
+
+    /** @var string js code will be executed on each interval firing */
+    public $onPeriod = '';
 
     public function run()
     {
@@ -31,6 +38,10 @@ class ProgressBar extends Progress
 
         if ($this->onDone) {
             $this->view->registerJs($this->id.'_onDoneEvent='.$this->onDone);
+        }
+
+        if ($this->onPeriod) {
+            $this->view->registerJs($this->id.'_onPeriodEvent='.$this->onPeriod);
         }
 
         return parent::run();
